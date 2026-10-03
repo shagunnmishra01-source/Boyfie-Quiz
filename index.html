@@ -3,389 +3,87 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Boyfriend Exam 💗</title>
-
+<title>Test For My Boyfriend</title>
 <style>
-* {
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: linear-gradient(135deg, #ffd6e7, #e8d9ff);
-  color: #302033;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-}
-
-.card {
-  width: 100%;
-  max-width: 520px;
-  background: rgba(255,255,255,0.92);
-  border-radius: 28px;
-  padding: 28px;
-  box-shadow: 0 15px 40px rgba(80,40,80,.2);
-  text-align: center;
-}
-
-h1 {
-  font-size: 30px;
-  margin-bottom: 8px;
-}
-
-.subtitle {
-  color: #765b73;
-  margin-bottom: 25px;
-}
-
-button {
-  width: 100%;
-  border: none;
-  border-radius: 16px;
-  padding: 15px;
-  margin: 8px 0;
-  font-size: 16px;
-  cursor: pointer;
-  background: #f5d1e2;
-  color: #302033;
-  transition: .2s;
-}
-
-button:hover {
-  transform: scale(1.02);
-  background: #e9b8d1;
-}
-
-.start {
-  background: #d99ac1;
-  color: white;
-  font-weight: bold;
-}
-
-.hidden {
-  display: none;
-}
-
-.progress {
-  font-size: 13px;
-  color: #8b6682;
-  margin-bottom: 15px;
-}
-
-#feedback {
-  min-height: 30px;
-  font-weight: bold;
-  margin: 12px 0;
-}
-
-.score {
-  font-size: 45px;
-  font-weight: bold;
-  margin: 15px;
-}
-
-.heart {
-  font-size: 45px;
-  animation: float 1.5s infinite alternate;
-}
-
-@keyframes float {
-  from { transform: translateY(0); }
-  to { transform: translateY(-8px); }
-}
+body{font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:#0f0f0f;color:#fff;margin:0;padding:20px;display:flex;justify-content:center}
+.card{max-width:480px;width:100%;background:#1c1c1e;border-radius:24px;padding:24px;box-shadow:0 10px 40px rgba(255,0,80,.2)}
+h1{font-size:22px;text-align:center;margin:0 0 6px}
+.sub{color:#aaa;text-align:center;font-size:13px;margin-bottom:20px}
+.q{margin:18px 0;padding:16px;background:#262628;border-radius:16px}
+.q-title{font-weight:700;font-size:15px;margin-bottom:12px}
+.opt{display:block;width:100%;text-align:left;padding:12px 14px;margin:8px 0;border-radius:12px;border:1px solid #333;background:#1c1c1e;color:#fff;font-size:14px;cursor:pointer}
+.opt:hover{border-color:#ff2d78}
+.opt.selected{background:#ff2d78;border-color:#ff2d78}
+button.main{width:100%;padding:16px;border:none;border-radius:14px;background:#ff2d78;color:#fff;font-weight:800;font-size:16px;margin-top:10px;cursor:pointer}
+#result{display:none;text-align:center;padding:20px;background:#262628;border-radius:16px;margin-top:20px}
+#result h2{color:#ff2d78}
+small{color:#777}
 </style>
 </head>
-
 <body>
-
 <div class="card">
+<h1>Quick Test For You 😏</h1>
+<p class="sub">No lying. Pick one honestly. It's from my POV.</p>
 
-  <div id="home">
-    <div class="heart">💗</div>
-    <h1>THE BOYFRIEND EXAM</h1>
+<div id="quiz"></div>
+<button class="main" onclick="finish()">See My Result</button>
 
-    <p class="subtitle">
-      Welcome, boyfriend. Your mission is simple:<br>
-      prove that you actually pay attention. 😭
-    </p>
-
-    <p>
-      ⚠️ No cheating<br>
-      ⚠️ No asking your girlfriend<br>
-      ⚠️ “I forgot” is NOT a valid excuse 💀
-    </p>
-
-    <button class="start" onclick="startQuiz()">
-      START THE EXAM 🫡
-    </button>
-  </div>
-
-  <div id="quiz" class="hidden">
-    <div class="progress" id="progress"></div>
-
-    <h2 id="question"></h2>
-
-    <div id="answers"></div>
-
-    <div id="feedback"></div>
-
-    <button id="next" class="hidden" onclick="nextQuestion()">
-      NEXT ➜
-    </button>
-  </div>
-
-  <div id="result" class="hidden">
-    <div class="heart">🥹💗</div>
-
-    <h1>EXAM COMPLETE</h1>
-
-    <div class="score" id="score"></div>
-
-    <p id="resultText"></p>
-
-    <hr>
-
-    <p>
-      okay but jokes aside... 🥹
-    </p>
-
-    <p>
-      Thank you for being part of my life, for making me laugh,
-      putting up with my nonsense, and creating so many little
-      memories with me.
-    </p>
-
-    <p>
-      We're obviously not perfect. We can be dramatic,
-      stubborn, annoying and occasionally argue over the most
-      ridiculous things 💀
-    </p>
-
-    <p>
-      But the laughs, the random conversations, the hugs,
-      the inside jokes and all our silly little moments
-      make everything so special. 🫶🏻
-    </p>
-
-    <h3>
-      Here's to more memories, more chaos and more us. 💗
-    </h3>
-
-    <p>
-      Now go collect your imaginary boyfriend-exam certificate,
-      nerd. 😭🏆
-    </p>
-  </div>
-
+<div id="result">
+<h2 id="rTitle"></h2>
+<p id="rDesc"></p>
+<p id="rLine" style="font-weight:700;margin-top:12px"></p>
+<small>Now screenshot and send it to me.</small>
+</div>
 </div>
 
 <script>
-
 const questions = [
-  {
-    q: "What happens when I say 'I'm fine' in THAT tone? 💀",
-    answers: [
-      "Everything is perfectly fine",
-      "Something is definitely up 😭",
-      "I want pizza",
-      "I'm about to fall asleep"
-    ],
-    correct: 1
-  },
-
-  {
-    q: "What is one of the fastest ways to make me laugh?",
-    answers: [
-      "Being unnecessarily serious",
-      "Making a completely random joke",
-      "Ignoring me",
-      "Giving me homework"
-    ],
-    correct: 1
-  },
-
-  {
-    q: "What are we most likely to do after saying 'okay bye'?",
-    answers: [
-      "Actually leave immediately",
-      "Have another conversation for 45 minutes",
-      "Go study",
-      "Become strangers"
-    ],
-    correct: 1
-  },
-
-  {
-    q: "Who is more likely to be stubborn during an argument? 👀",
-    answers: [
-      "Me",
-      "You",
-      "Both of us 💀",
-      "Neither. We are angels."
-    ],
-    correct: 2
-  },
-
-  {
-    q: "What happens when we're finally together after missing each other?",
-    answers: [
-      "We become extremely formal",
-      "We barely talk",
-      "We become ridiculously clingy and cute 😭",
-      "We immediately start studying"
-    ],
-    correct: 2
-  },
-
-  {
-    q: "What's more dangerous?",
-    answers: [
-      "A tiny argument",
-      "Two stubborn people arguing",
-      "A forgotten birthday",
-      "All of the above 💀"
-    ],
-    correct: 3
-  },
-
-  {
-    q: "What's one thing we absolutely need more of?",
-    answers: [
-      "Arguments",
-      "Awkward silence",
-      "Cute memories together 🫶🏻",
-      "Homework"
-    ],
-    correct: 2
-  },
-
-  {
-    q: "Final question: are you lucky to have me? 😌",
-    answers: [
-      "Obviously",
-      "Obviously x100",
-      "Do I even need to answer?",
-      "ALL OF THE ABOVE 😭"
-    ],
-    correct: 3
-  }
+{q:"If I send you a pic in lingerie out of nowhere, what are you doing?",o:["Dropping everything to come see me","Telling me exactly what you'd do to me","Begging me for a video","Trying to stay cool but losing it"]},
+{q:"If I'm sitting on your lap in a short dress, where are your hands going?",o:["My waist, holding me tight","My thighs, slowly going up","Everywhere you can get away with","You'd ask me where I want them"]},
+{q:"If I whisper 'I've been thinking about you all day' in your ear?",o:["'She's about to be trouble'","'I need to have her right now'","'What has she been thinking exactly?'","'I'm not letting her leave'"]},
+{q:"If I say 'be rough tonight', what are you doing?",o:["Pinning me down instantly","Asking how rough I want it","Smirking: 'you sure you can handle it?'","Showing me, not telling me"]},
+{q:"If I say 'I'm in charge tonight', how do you react?",o:["Yes ma'am and you let me lead","Pretend to obey but take over later","You get even more turned on","You test me to see if I really can"]},
+{q:"If we had a hotel room for 24 hours, what first?",o:["Not even let me unpack","Order room service and tease me all day","Make me beg before you touch me","Try everything we've talked about"]},
+{q:"If I ask 'what's your dirtiest thought about me right now?'",o:["Something sweet but filthy","Something too dirty to say","Rather show me than say it","Whisper it so I get shy"]},
+{q:"If I say 'I had a naughty dream about you'?",o:["Tell you every single detail","Re-create it right now","Show you what happened","Tell me while you touch me"]},
+{q:"If I get jealous and say 'prove you only want me'?",o:["Kiss me until I forget","Tell me exactly why you only want me","Show me with actions not words","Get possessive back"]},
+{q:"If I ask 'am I good enough for your fantasies?'",o:["You're more than my fantasies","You ARE my fantasy","You + a little wilder would be perfect","You're the reason my fantasies are dirty now"]}
 ];
 
-let current = 0;
-let score = 0;
+let answers = {};
+const quizDiv = document.getElementById('quiz');
+questions.forEach((qq,i)=>{
+let div=document.createElement('div');div.className='q';
+div.innerHTML=`<div class="q-title">${i+1}. ${qq.q}</div>`;
+qq.o.forEach((opt,j)=>{
+let letter = ["A","B","C","D"][j];
+let btn=document.createElement('button');btn.className='opt';btn.innerText=`${letter}) ${opt}`;
+btn.onclick=()=>{
+div.querySelectorAll('.opt').forEach(b=>b.classList.remove('selected'));
+btn.classList.add('selected');
+answers[i]=letter;
+};
+div.appendChild(btn);
+});
+quizDiv.appendChild(div);
+});
 
-const funnyWrong = [
-  "BRO 😭 please reconsider your life choices.",
-  "That answer was criminal 💀",
-  "We need to have a meeting after this exam.",
-  "I'm pretending I didn't see that 😭",
-  "Interesting... very interesting... 👀",
-  "Your boyfriend privileges are being reviewed 💀"
-];
-
-function startQuiz() {
-  document.getElementById("home").classList.add("hidden");
-  document.getElementById("quiz").classList.remove("hidden");
-  showQuestion();
+function finish(){
+if(Object.keys(answers).length < 10){alert("Answer all 10 first, don't cheat 😏");return;}
+let count={A:0,B:0,C:0,D:0};Object.values(answers).forEach(v=>count[v]++);
+let max = Object.keys(count).reduce((a,b)=>count[a]>count[b]?a:b);
+const results={
+A:{t:"THE OBSESSED LOVER 😍",d:"You don't just want me, you're obsessed with me. Sweet but dangerously into me. Low risk of cheating, high risk of being too attached.",l:"So you're basically whipped for me huh?"},
+B:{t:"THE FILTHY ROMANTIC 🥀",d:"You have a dirty mind but you make it hot. You like to tease, build it up, and torture me slowly. You remember exactly what I like.",l:"So you like to make me suffer first?"},
+C:{t:"THE DOMINANT BEAST 😈",d:"You want control. And you want me to lose it. Confident, possessive, doesn't ask twice. You fantasize about me begging.",l:"So you think you can handle me?"},
+D:{t:"THE SECRET FREAK 🤫",d:"You act chill but your mind is the dirtiest. You're curious, want to try everything, just waiting for me to say yes. You'll surprise me the most.",l:"What are you hiding from me? Tell me now."}
+};
+document.getElementById('result').style.display='block';
+document.getElementById('rTitle').innerText=results[max].t;
+document.getElementById('rDesc').innerText=results[max].d;
+document.getElementById('rLine').innerText=`Send me: "${results[max].l}"`;
+window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'});
 }
-
-function showQuestion() {
-
-  const q = questions[current];
-
-  document.getElementById("progress").innerText =
-    `Question ${current + 1} / ${questions.length}`;
-
-  document.getElementById("question").innerText = q.q;
-
-  const answers = document.getElementById("answers");
-  answers.innerHTML = "";
-
-  document.getElementById("feedback").innerText = "";
-  document.getElementById("next").classList.add("hidden");
-
-  q.answers.forEach((answer, index) => {
-
-    const button = document.createElement("button");
-
-    button.innerText = answer;
-
-    button.onclick = () => selectAnswer(index);
-
-    answers.appendChild(button);
-  });
-}
-
-function selectAnswer(index) {
-
-  const q = questions[current];
-
-  const buttons = document.querySelectorAll("#answers button");
-
-  buttons.forEach(button => {
-    button.disabled = true;
-  });
-
-  if (index === q.correct) {
-
-    score++;
-
-    document.getElementById("feedback").innerText =
-      "OKAYYYY YOU ACTUALLY KNOW ME 😭💗";
-
-  } else {
-
-    const random =
-      funnyWrong[Math.floor(Math.random() * funnyWrong.length)];
-
-    document.getElementById("feedback").innerText = random;
-  }
-
-  document.getElementById("next").classList.remove("hidden");
-}
-
-function nextQuestion() {
-
-  current++;
-
-  if (current < questions.length) {
-    showQuestion();
-  } else {
-    showResult();
-  }
-}
-
-function showResult() {
-
-  document.getElementById("quiz").classList.add("hidden");
-  document.getElementById("result").classList.remove("hidden");
-
-  document.getElementById("score").innerText =
-    `${score} / ${questions.length}`;
-
-  let text = "";
-
-  if (score === questions.length) {
-    text = "PERFECT SCORE 😭🏆 You officially passed the boyfriend exam.";
-  }
-  else if (score >= 6) {
-    text = "Okayyyy, you actually know your girl pretty well. Respect 🫡💗";
-  }
-  else if (score >= 4) {
-    text = "Not terrible... but we definitely need a revision session 💀";
-  }
-  else {
-    text = "BRO 😭 we need to restart the relationship handbook.";
-  }
-
-  document.getElementById("resultText").innerText = text;
-}
-
 </script>
-
 </body>
 </html>
